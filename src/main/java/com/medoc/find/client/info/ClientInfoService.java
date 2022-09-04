@@ -19,7 +19,7 @@ public class ClientInfoService {
 
     public ClientInfoService(final ClientRepository clientRepository,
                              final QueryDslClientRepository queryDslClientRepository,
-                             ClientInfoMapper clientInfoMapper) {
+                             final ClientInfoMapper clientInfoMapper) {
         this.clientRepository = clientRepository;
         this.queryDslClientRepository = queryDslClientRepository;
         this.clientInfoMapper = clientInfoMapper;
@@ -29,12 +29,21 @@ public class ClientInfoService {
     public ClientEntity save(final ClientInfoDTO clientInfoDTO) {
         final ClientEntity clientEntity = new ClientEntity();
         clientEntity.setAddress(clientInfoDTO.getAddress());
-        clientEntity.setEmail("aa@aacom");
+        clientEntity.setEmail(clientInfoDTO.getEmail());
         clientEntity.setName(clientInfoDTO.getName());
         clientEntity.setLastName(clientInfoDTO.getLastName());
         clientEntity.setPhone(clientInfoDTO.getPhone());
 
         return clientRepository.save(clientEntity);
+
+    }
+
+    public boolean update(Long id, final ClientInfoDTO clientInfoDTO) {
+
+        ClientEntity clientEntity = clientInfoMapper.mapfromobjectEntity(clientInfoDTO);
+        clientRepository.save(clientEntity);
+        return true;
+
 
     }
 

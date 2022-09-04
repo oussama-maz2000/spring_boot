@@ -14,7 +14,6 @@ public class ClientEntity {
 
     @Id
     @GeneratedValue
-    @Setter(AccessLevel.NONE)
     private Long id;
 
     @Column(name = "MED_CI_NAME", nullable = false, length = 30)

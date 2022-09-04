@@ -74,4 +74,11 @@ public class ClientInfoResource {
     public List<ClientInfoDTO> getAll(){
          return  clientInfoService.getAll();
     }
+
+    @RequestMapping("/update")
+    @PutMapping
+    public boolean updateclient(@RequestParam(name= "id") Long id,@RequestBody ClientInfoDTO client ){
+        clientInfoService.update(id,client);
+        return true;
+    }
 }

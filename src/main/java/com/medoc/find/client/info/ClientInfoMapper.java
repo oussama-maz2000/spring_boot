@@ -15,6 +15,7 @@ public interface ClientInfoMapper {
 
     List<ClientInfoDTO> mapFromClientEntities(List<ClientEntity> entities);
 
+    ClientEntity mapfromobjectEntity(ClientInfoDTO clientInfoDTO);
 
     default String buildFullName(ClientEntity entity) {
 
