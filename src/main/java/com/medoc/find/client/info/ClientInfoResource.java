@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/client/info")
+@RequestMapping("/api/client")
 public class ClientInfoResource {
 
     private final ClientInfoService clientInfoService;
@@ -24,6 +24,13 @@ public class ClientInfoResource {
         return clientInfoService.getClient(null);
     }
 */
+
+    @RequestMapping("")
+    @GetMapping
+    public String welcome() {
+        return "welcome in client medoc";
+    }
+
     @RequestMapping("/find/with")
     @GetMapping
     public List<ClientEntity> getclientByCretiria(final ClientInfoCriteriaRequest clientInfoCriteriaRequest) {
